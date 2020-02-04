@@ -1,3 +1,5 @@
+// Pedir al usurio su nombre y decirle cual es su último letra
+
 var nombre;
 const c = console.log
 
