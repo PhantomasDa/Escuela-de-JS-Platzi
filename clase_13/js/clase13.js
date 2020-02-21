@@ -55,6 +55,8 @@ const imprimiredad = function(persona){
     }
 }
 
+//alkdsjlkasd
+
 // function  imprimirsiesMayorDeEdad(persona){
 //     if(esmayordeedad(persona)){
 //         console.log(`${persona.nombre} es mayor de edad`)
