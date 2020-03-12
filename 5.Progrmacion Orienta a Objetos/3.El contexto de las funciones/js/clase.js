@@ -1,31 +1,18 @@
-
-var vicky = {
-    nombre:'Vicky',
-    apellido:'Zapata',
-    altura:1.56
-}
-
-var luis = {
-    nombre:'Luis',
-    apellido:'Camarena',
-    altura:1.94
-}
-
-var carlos = {
-    nombre:'Carlos',
-    apellido:'Ortega',
-    altura:1.79
-}
-
-const passarAlturaACms= persona => ({
-    ...persona,
-    altura:persona.altura * 100
-})
-
-
-
-var personas = [vicky,luis,carlos];
-
-var personasCms=personas.map(passarAlturaACms)
-
-console.log(personasCms)
+function Persona (nombre , apellido ,altura){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.altura = altura;
+  }
+  
+  Persona.prototype.saludar =() => {
+    console.log(`Hola me llamo ${this.nombre}${this.apellido}`);
+  }
+  
+  Persona.prototype.soyAlto = function() {
+     return this.altura >1.75;
+  }
+  
+  
+  var Robert = new Persona('Robert','Hurtado', 1.50);
+  var Elza = new Persona('Elza','Rozo', 1.60);
+  var Marcelo = new Persona('Marcelo','King',1.70);

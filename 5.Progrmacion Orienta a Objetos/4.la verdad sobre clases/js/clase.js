@@ -1,39 +1,32 @@
-var flavio = {
-    nombre:'flavio',
-    altura:1.70,
-    dinero: 100
-  }
-  
-  var yaki = {
-    nombre:'yaki',
-    altura:1.60,
-    dinero: 350
-  }
-  
-  var cesar = {
-    nombre:'cesar',
-    altura:1.75,
-    dinero:120
-  }
-  
-  var ana = {
-    nombre:'ana',
-    altura:1.50,
-    dinero:350
-  }
-  var personas = [yaki,flavio,cesar,ana]
-  
-  /* var acum = 0
-  
-  for (var i = 0; i < personas.length; i++) {
-    acum += personas[i].dinero
-  }
-  
-  console.log('en total hay ' + acum + ' soles');
-   forma mas comun */
-  
-  const reducir = (acum, {dinero}) => acum + dinero
-  
-  var totalDeDinero = personas.reduce(reducir, 0)
-  
-  console.log('en total hay ' + totalDeDinero + ' soles');
+function heredaDe(prototipoHijo, prototipoPadre) {
+  var fn = function () {}
+  fn.prototype = prototipoPadre.prototype
+  prototipoHijo.prototype = new fn
+  prototipoHijo.prototype.constructor = prototipoHijo
+}
+
+function Persona (nombre , apellido ,altura){
+  this.nombre = nombre;
+  this.apellido = apellido;
+  this.altura = altura;
+}
+
+Persona.prototype.saludar =() => {
+  console.log(`hola me llamo ${this.nombre} ${this.apellido} `);
+}
+
+Persona.prototype.soyAlto = function() {
+   return this.altura >1.75;
+}
+
+function desarrollador(nombre, apellido) {
+  this.nombre=nombre
+  this.apellido = apellido
+}
+heredaDe(desarrollador, Persona)
+desarrollador.prototype.saludar = function () {
+  console.log(`hola me llamo ${this.nombre} ${this.apellido} y soy desarrollador`)
+}
+
+var Robert = new Persona('Robert','Hurtado', 1.50);
+var Robert0 = new desarrollador('Roberts','Hurtado', 1.50);
