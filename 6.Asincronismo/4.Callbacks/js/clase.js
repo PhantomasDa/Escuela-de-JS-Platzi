@@ -1,32 +1,10 @@
-function heredaDe(prototipoHijo, prototipoPadre) {
-  var fn = function () {}
-  fn.prototype = prototipoPadre.prototype
-  prototipoHijo.prototype = new fn
-  prototipoHijo.prototype.constructor = prototipoHijo
-}
+const API_URL = 'https://swapi.co/api/'
+const PEOPLE_URL = 'people/:id'
 
-function Persona (nombre , apellido ,altura){
-  this.nombre = nombre;
-  this.apellido = apellido;
-  this.altura = altura;
+const lukeUrl = `${API_URL}${PEOPLE_URL.replace(':id',1)}`
+const opts = {crossDomain: true}
+const onResponse = function (luke){
+  console.log(`Hola yo soy ${luke.name}`)
 }
+$.get(lukeUrl, opts, onResponse)
 
-Persona.prototype.saludar =() => {
-  console.log(`hola me llamo ${this.nombre} ${this.apellido} `);
-}
-
-Persona.prototype.soyAlto = function() {
-   return this.altura >1.75;
-}
-
-function desarrollador(nombre, apellido) {
-  this.nombre=nombre
-  this.apellido = apellido
-}
-heredaDe(desarrollador, Persona)
-desarrollador.prototype.saludar = function () {
-  console.log(`hola me llamo ${this.nombre} ${this.apellido} y soy desarrollador`)
-}
-
-var Robert = new Persona('Robert','Hurtado', 1.50);
-var Robert0 = new desarrollador('Roberts','Hurtado', 1.50);
