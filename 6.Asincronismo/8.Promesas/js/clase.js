@@ -1,22 +1,23 @@
-class Persona{
-  constructor(nombre , apellido ,altura){
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.altura = altura;
-  }
-  saludar(){
-    console.log(`hola me llamo ${this.nombre} ${this.apellido} `);
-  }
-  soyAlto(){
-    return this.altura >1.75;
-  }
-}
-class desarrollador extends Persona{
-constructor(nombre, apellido, altura) {
-  super(nombre, apellido, altura)
-}
-saludar(){
-  console.log(`hola me llamo ${this.nombre} ${this.apellido} y soy desarrollador `);
+const API_URL = 'https://swapi.co/api/'
+const PEOPLE_URL = 'people/:id'
+const opts = {crossDomain: true}
 
+
+function obtenerPersonaje(id){
+return new Promise((resolve, reject) =>{
+  const url=`${API_URL}${PEOPLE_URL.replace(':id', id)}`
+$.get(url, opts, function(data){
+  resolve(data)
+})
+.fail(() => reject(id))
+})
 }
+function onError(id){
+  console.log(`susedio un error al optener el personas ${id}`)
 }
+obtenerPersonaje(1)
+.then(function(personaje){
+  console.log(`el personaje 1 es ${personaje.name} `)
+})
+.catch(onError)
+
