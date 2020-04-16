@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Estructura de datos inmutable</title>
+  </head>
+  <body>
+
+    <script>
+     const sacha = {
+       nombre : 'sasha',
+       apellido: 'rios',
+       edad: 59
+     }
+
+
+    //  const cumpleanos = persona => persona.edad++
+    const cumpleanosImutable= persona => ({
+      ...persona,
+          edad: persona.edad + 1    })
+    </script>
+  </body>
+</html>
